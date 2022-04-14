@@ -4,7 +4,7 @@ class Form extends Component {
   constructor(props) {
   super(props);
   // Don't call this.setState() here!
-  this.state = { name: "", lName: "", email: "", };
+  this.state = { fName: "", lName: "", email: "", };
 }
 
 handleChange = (event) => {
@@ -26,7 +26,7 @@ handleSubmit = (e) => {
   e.preventDafault();
   alert('Submission received..!')
   this.setState({
-    name: "",
+    fName: "",
     lName: "",
     email: ""
   })
@@ -87,7 +87,7 @@ handleSubmit = (e) => {
           <div className=' max-w-md h-[50vh] w-full md:w-1/2 border-2 p-5 rounded-xl'>
             <div className='w-full text-white text-lg'>
               
-              <h1>First Name: {this.state.name}</h1>
+              <h1>First Name: {this.state.fName}</h1>
               <h1>Last Name: {this.state.lName}</h1>
               <h1>Email Address: {this.state.email}</h1>
               <h1>Gender: {this.state.gender}</h1>
