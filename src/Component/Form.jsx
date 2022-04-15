@@ -4,8 +4,21 @@ class Form extends Component {
   constructor(props) {
   super(props);
   // Don't call this.setState() here!
-  this.state = { fName: "", lName: "", email: "", };
+  this.state = { fName: "", lName: "", email: "", gender: "", address: "", bio:"" };
 }
+
+handleSubmit = (e) => {
+  e.preventDafault();
+  alert('Submission received..!')
+  this.setState({
+    fName: "",
+    lName: "",
+    email: "",
+    gender: "",
+    address: "",
+    bio: ""
+  })
+};
 
 handleChange = (event) => {
   this.setState({ [event.target.name]: event.target.value})
@@ -22,15 +35,7 @@ handleChange = (event) => {
 //   this.setState({ email: event.target.value})
 // }
 
-handleSubmit = (e) => {
-  e.preventDafault();
-  alert('Submission received..!')
-  this.setState({
-    fName: "",
-    lName: "",
-    email: ""
-  })
-};
+
 
   render() {
     return (
@@ -64,19 +69,25 @@ handleSubmit = (e) => {
               {/* gender */}
               <div className=' flex flex-col space-y-2 w-full'>
                 <label htmlFor="gender">Gender</label>
+                <div onChange={this.handleChange} id="gender">
+                  <p><input type="radio" value="Male" name="gender" required /> Male </p>
+                  <p><input type="radio" value="Female" name="gender"/> Female </p>
+                  <p><input type="radio" value="Other" name="gender"/> Other </p>
+                </div>
 
               </div>
 
               {/* address */}
-              <div>
+              <div className=' flex flex-col space-y-2 w-full'>
                 <label htmlFor="address">Address</label>
-
+                <input onChange={this.handleChange} type="text" name="address" id="address" placeholder='Address' className=' border-2 focus:outline-none w-full p-2 rounded-xl'/>
               </div>
 
 
               {/* bio */}
               <div>
-                
+                <label htmlFor="bio">Bio</label>
+                <textarea className=' h-32 w-full rounded-xl focus:outline-none p-2' name='bio' onChange={this.handleChange}/>
               </div>
 
 
@@ -91,6 +102,8 @@ handleSubmit = (e) => {
               <h1>Last Name: {this.state.lName}</h1>
               <h1>Email Address: {this.state.email}</h1>
               <h1>Gender: {this.state.gender}</h1>
+              <h1>Address: {this.state.address}</h1>
+              <h1>Bio: {this.state.bio}</h1>
 
             </div>
           </div>
